@@ -17,7 +17,7 @@ def compute_spatial_transfer_function(conductivities, radii, l):
     def compute_A_B(i, A_im1, B_im1, gamma_i):
         r_ratio =  radii[i-1] / radii[i]
         num = (A_im1 + B_im1)
-        denom = (r_ratio)**l + gamma[i] * (1/r_ratio**(l+1))
+        denom = (r_ratio)**l + gamma_i * (1/r_ratio**(l+1))
         A =  num / denom
         B = gamma_i * A
         return A, B
@@ -43,8 +43,8 @@ def compute_spatial_transfer_function(conductivities, radii, l):
     H_l = (A[-1] + B[-1]) / (A[0] + B[0])
     return H_l
 
-radii = [7.8, 8.1, 8.6, 9.1]
-conductivities = [1, 1/5, 15, 1]
+radii = [7.9, 8.0, 8.6, 9.1]
+conductivities = [1, 5, 1/15, 1]
 l_max = 30
 H = np.zeros(l_max)
 for l in range(l_max):
