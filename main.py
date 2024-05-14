@@ -1,8 +1,19 @@
+"""
+Here, we use a 4-layer head model to compute the EEG transfer function from the inner-most layer to the scalp.
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 
 
-def compute_eeg_transfer_function(conductivities, radii, l):
+def compute_eeg_transfer_function(conductivities, radii, l_max):
+    H = np.zeros(l_max)
+    for l in range(l_max):
+        H[l] = compute_eeg_transfer_function_l(conductivities, radii, l)
+    return H
+
+
+def compute_eeg_transfer_function_l(conductivities, radii, l):
     N = len(radii)
 
     def compute_gamma(i, zetta_ip1):
@@ -47,14 +58,18 @@ def compute_eeg_transfer_function(conductivities, radii, l):
 
 radii = [7.9, 8.0, 8.6, 9.1]
 conductivities = [1, 5, 1 / 15, 1]
-l_max = 100
-H = np.zeros(l_max)
-for l in range(l_max):
-    H[l] = compute_eeg_transfer_function(conductivities, radii, l)
+conductivities_homogeneous = [1, 1, 1, 1]
 
-plt.plot(H)
+l_max = 100
+H = compute_eeg_transfer_function(conductivities, radii, l_max)
+H_homo = compute_eeg_transfer_function(conductivities_homogeneous, radii, l_max)
+
+plt.plot(H, label="Head conductivities")
+plt.plot(H_homo, label="Homogeneous conductivities")
+plt.legend()
 plt.xlabel("Spherical harmonics degree ($l$)")
 plt.ylabel("Transfer function ($H_l$)")
 plt.yscale("log")
 plt.title("EEG Transfer Function")
+plt.savefig("EEG_Transfer_Function.png")
 plt.show()
