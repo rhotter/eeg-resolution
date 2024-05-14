@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def compute_spatial_transfer_function(conductivities, radii, l):
+def compute_eeg_transfer_function(conductivities, radii, l):
     N = len(radii)
 
     def compute_gamma(i, zetta_ip1):
@@ -48,7 +48,7 @@ conductivities = [1, 5, 1/15, 1]
 l_max = 30
 H = np.zeros(l_max)
 for l in range(l_max):
-    H[l] = compute_spatial_transfer_function(conductivities, radii, l)
+    H[l] = compute_eeg_transfer_function(conductivities, radii, l)
 
 plt.plot(H)
 plt.xlabel('Spherical harmonics degree (l)')
