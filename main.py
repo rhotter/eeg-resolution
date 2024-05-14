@@ -45,12 +45,14 @@ def compute_eeg_transfer_function(conductivities, radii, l):
 
 radii = [7.9, 8.0, 8.6, 9.1]
 conductivities = [1, 5, 1/15, 1]
-l_max = 30
+l_max = 100
 H = np.zeros(l_max)
 for l in range(l_max):
     H[l] = compute_eeg_transfer_function(conductivities, radii, l)
 
 plt.plot(H)
-plt.xlabel('Spherical harmonics degree (l)')
-plt.ylabel('Transfer function (H_l)')
+plt.xlabel('Spherical harmonics degree ($l$)')
+plt.ylabel('Transfer function ($H_l$)')
+plt.yscale('log')
+plt.title('EEG Transfer Function')
 plt.show()
