@@ -108,22 +108,3 @@ def compute_eeg_transfer_function_l(conductivities, radii, l):
 
     H_l = (A[-1] + B[-1]) / (A[0] + B[0])
     return H_l
-
-
-radii = [7.9, 8.0, 8.6, 9.1]
-conductivities = [1, 5, 1 / 15, 1]
-conductivities_homogeneous = [1, 1, 1, 1]
-
-l_max = 100
-H = compute_eeg_transfer_function(conductivities, radii, l_max)
-H_homo = compute_eeg_transfer_function(conductivities_homogeneous, radii, l_max)
-
-plt.plot(H, label="Head conductivities")
-plt.plot(H_homo, label="Homogeneous conductivities")
-plt.legend()
-plt.xlabel("Spherical harmonics degree ($l$)")
-plt.ylabel("Transfer function ($H_l$)")
-plt.yscale("log")
-plt.title("EEG Transfer Function")
-plt.savefig("Fig_5_EEG_Transfer_Function.png")
-plt.show()
