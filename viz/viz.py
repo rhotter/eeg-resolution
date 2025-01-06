@@ -1,6 +1,7 @@
 # %%
 import importlib
 import viz.spherical_utils as spherical_utils
+import utils
 
 importlib.reload(spherical_utils)
 
@@ -35,18 +36,27 @@ grid.data = gaussian_data
 
 # Perform spherical harmonic analysis
 coeffs = grid.expand()
+# %%
+
+# Create coefficients with EEG transfer function decay
+# Define 4-layer head model parameters (brain, CSF, skull, scalp)
+
+radii = [7.9, 8.0, 8.6, 9.1]
+conductivities = [1, 5, 1 / 15, 1]
+
+# Get the EEG transfer function
+H = utils.compute_eeg_transfer_function(conductivities, radii, lmax + 1)
 
 # %%
-# Create decayed coefficients
-decay_factor = 0.5  # Controls how fast the coefficients decay
+# Create decayed coefficients using EEG transfer function
 coeffs_decayed = pyshtools.SHCoeffs.from_zeros(lmax=lmax)
 
 # Get the coefficient arrays
 coeffs_array = coeffs.to_array()
 
-# Apply exponential decay to coefficients
+# Apply EEG transfer function to coefficients
 for l in range(lmax + 1):
-    decay = np.exp(-l * decay_factor)  # Exponential decay with l
+    decay = H[l]  # Use the EEG transfer function value for this degree
     for m in range(-l, l + 1):
         if m >= 0:
             # Set cosine coefficients (m >= 0)
@@ -75,7 +85,7 @@ plt.title(f"Full Reconstruction (l≤{lmax})")
 ax3 = fig.add_subplot(133)
 grid_recon_decayed = coeffs_decayed.expand()
 img = grid_recon_decayed.plot(show=False)
-plt.title(f"Decayed Reconstruction (decay={decay_factor})")
+plt.title(f"Decayed Reconstruction")
 
 plt.tight_layout()
 plt.show()
@@ -100,7 +110,9 @@ fig3 = plot_function_on_sphere_plotly(
     grid_recon_decayed.data,
     theta_grid,
     phi_grid,
-    title=f"Decayed Reconstruction (decay={decay_factor})",
+    title=f"Decayed Reconstruction",
+    colorbar_title="Voltage",
 )
 fig3.show()
+
 # %%

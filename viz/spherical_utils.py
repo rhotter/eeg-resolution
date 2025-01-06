@@ -237,15 +237,19 @@ def plot_function_on_sphere_plotly(
             )
         ]
     )
-
     # Update the layout
     fig.update_layout(
         title=title,
         scene=dict(
-            aspectmode="data", xaxis_title="X", yaxis_title="Y", zaxis_title="Z"
+            aspectmode="data",
+            xaxis=dict(visible=False),
+            yaxis=dict(visible=False),
+            zaxis=dict(visible=False),
+            bgcolor="white",
         ),
         width=800,
         height=800,
+        paper_bgcolor="white",
     )
 
     return fig
