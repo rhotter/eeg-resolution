@@ -2,8 +2,18 @@
 Here, we use a 4-layer head model to compute the EEG transfer function from the inner-most layer to the scalp.
 """
 
+"""
+radii = [7.9, 8.0, 8.6, 9.1]
+conductivities = [1, 5, 1 / 15, 1]
+
+l_max = 100
+
+H = compute_eeg_transfer_function(conductivities, radii, l_max)
+
+l_values = np.arange(l_max + 1)
+"""
+
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 def compute_eeg_transfer_function(conductivities, radii, l_max):
