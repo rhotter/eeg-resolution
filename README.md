@@ -33,7 +33,9 @@ $$a_{l,m} = H_{l,m}b_{l,m}$$
 It turns out that $H_{l,m}$ is the same for all $m$ for a given $l$, so we write $H_{l}=H_{l,m}$. What's being plotted in the figures are $H_{l,m}$. $H_{l,m}$ decreases exponentially in $l$.
 
 Each harmonic number $l$ is associated to a wavelength
+
 $$\lambda_{l} \approx \frac{2\pi R}{l}$$
+
 where $R$ is the readius of the sphere.
 
 ## Reproduced figures
