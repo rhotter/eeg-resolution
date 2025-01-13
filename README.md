@@ -18,7 +18,7 @@ But EEG doesn't measure $V_{\text{brain}}(\mathbf{r})$ directly. Instead, since 
 
 The paper, [An Information-Theoretic View of EEG Sensing](https://ieeexplore.ieee.org/document/7782724), describes a method for relating $V_{\text{brain}}(\mathbf{r})$ to $V_{\text{scalp}}(\mathbf{r})$. The paper assumes both the brain and scalp are spherical, and that there is a cerebral spinal fluid and skull layer between them. Each region is parameterized by a thickness and conductivity, $\sigma$.
 
-You can decompose $V_{\text{scalp}}(\theta,\phi)$ and $V_{\text{brain}}(\theta,\phi)$ into spherical harmonics, $Y_{l,m}$
+You can decompose $V_{\text{scalp}}(\theta,\phi)$ and $V_{\text{brain}}(\theta,\phi)$ into spherical harmonics, $Y_{l,m}(\theta,\phi)$
 
 $$V_{\text{brain}}(\theta,\phi) = \sum_{l=0}^{\infty} \sum_{m=-l}^{l} a_{l,m} Y_{l,m}(\theta,\phi)$$
 
