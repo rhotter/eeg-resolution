@@ -1,16 +1,16 @@
-# What is the spatial resolution of EEG and MEG?
+# What is the spatial resolution of EEG?
 
-Everyone likes to say that EEG and MEG have low spatial resolution, but what is the resolution exactly?
+Everyone likes to say that EEG have low spatial resolution, but what is the resolution exactly?
 
-I simulated the transfer function between the brain and the scalp for MEG and EEG, following the methods in [this paper](https://ieeexplore.ieee.org/document/7782724).
+I simulated the transfer function between the brain and the scalp for EEG, following the methods in [this paper](https://ieeexplore.ieee.org/document/7782724).
 
-![Attenuation vs Wavelength](./imgs/Attenuation_vs_wavelength.png)
+![Attenuation vs Wavelength](./imgs/Attenuation_vs_wavelength_EEG.png)
 
-At signal-to-noise ratio (SNR) levels of 100 for EEG, wavelengths smaller than 2 cm drop below the noise floor. Interestingly, for the same SNR, EEG seems to have slightly higher spatial resolution than MEG.
+At signal-to-noise ratio (SNR) levels of 100 for EEG, wavelengths smaller than 2 cm drop below the noise floor.
 
 See [`main.ipynb`](./main.ipynb) for the code to produce the figures.
 
-## What does this transfer function mean?
+## What does this plot mean?
 
 In EEG, when neurons fire, sources of current in the brain give rise to a voltage distribution on the brain, $V_{\text{brain}}(\mathbf{r})$.
 
@@ -38,7 +38,7 @@ $$\lambda_{l} \approx \frac{2\pi R}{l}$$
 
 where $R$ is the readius of the sphere.
 
-## Reproduced figures
+## Reproduced figure
 
 To make sure, I implemented the method correctly, I reproduced Fig 5 from [the paper](https://ieeexplore.ieee.org/document/7782724).
 
