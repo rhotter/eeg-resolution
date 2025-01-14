@@ -1,6 +1,6 @@
 # What is the spatial resolution of EEG?
 
-Everyone likes to say that EEG have low spatial resolution, but what is the resolution exactly?
+Everyone likes to say that EEG has low spatial resolution, but what is the resolution exactly?
 
 I simulated the transfer function between the brain and the scalp for EEG, following the methods in [this paper](https://ieeexplore.ieee.org/document/7782724).
 
