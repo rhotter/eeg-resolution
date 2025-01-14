@@ -40,10 +40,14 @@ where $R$ is the readius of the sphere.
 
 ## Reproduced figure
 
-To make sure, I implemented the method correctly, I reproduced Fig 5 from [the paper](https://ieeexplore.ieee.org/document/7782724).
+To make sure I implemented the method correctly, I reproduced Fig 5 from [the paper](https://ieeexplore.ieee.org/document/7782724).
 
 ![Figure 5](./imgs/Fig_5_EEG_Transfer_Function.png)
 
 ## Reference
 
 P. Grover and P. Venkatesh, "An Information-Theoretic View of EEG Sensing," in Proceedings of the IEEE, vol. 105, no. 2, pp. 367-384, Feb. 2017, doi: 10.1109/JPROC.2016.2615179.
+
+The Grover work was an extension of earlier work presented here:
+
+Nunez, P. L., & Srinivasan, R. (2006). Electric fields of the brain: The neurophysics of EEG. Oxford University Press.
